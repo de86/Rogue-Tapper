@@ -1,0 +1,41 @@
+{
+    "dataItems" : [
+        {
+            "objectType": "mob",
+            "name": "slime",
+            "areas" : [
+                0
+            ],
+            "attack": 1,
+            "attackTime": 5,
+            "hp": 5,
+            "defense": 3,
+            "xp": 5
+        },
+        {
+            "objectType": "mob",
+            "name": "imp",
+            "areas" : [
+                0,
+                1
+            ],
+            "attack": 2,
+            "attackTime": 3,
+            "hp": 8,
+            "defense": 1,
+            "xp": 7
+        },
+        {
+            "objectType": "mob",
+            "name": "yeti",
+            "areas" : [
+                2
+            ],
+            "attack": 25,
+            "attackTime": 2,
+            "hp": 200,
+            "defense": 10,
+            "xp": 300
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "dataItems" : [
+        {  
+            "objectType": "weapon",
+            "name": "Sword",
+            "attack": 5,
+            "durability": 50
+        }
+    ]
+}

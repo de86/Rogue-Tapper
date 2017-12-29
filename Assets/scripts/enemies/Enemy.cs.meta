@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c4cea5fc45d7b4e4ea2dac52bcdc2985
+timeCreated: 1514050856
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spr_attack: {instanceID: 0}
+  - spr_idle: {fileID: 21300000, guid: 463d497887e701b459387d5bfea142e7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
