@@ -6,9 +6,9 @@ public class DB {
 
 	public int recordCount;
 
-	public Dictionary<string, MobData>    mobs    = new Dictionary<string, MobData>();
-	public Dictionary<string, ItemData>   items   = new Dictionary<string, ItemData>();
-	public Dictionary<string, WeaponData> weapons = new Dictionary<string, WeaponData>();
+	public Dictionary<int, MobData>    mobs    = new Dictionary<int, MobData>();
+	public Dictionary<int, ItemData>   items   = new Dictionary<int, ItemData>();
+	public Dictionary<int, WeaponData> weapons = new Dictionary<int, WeaponData>();
 
 	private const string MOBTABLE_FILENAME    = "mobs.json";
 	private const string ITEMTABLE_FILENAME   = "items.json";
@@ -41,34 +41,37 @@ public class DB {
 
 		int count = 0;
 		foreach (string file in DB_FILES) {
-			if (File.Exists(Path.Combine(Application.streamingAssetsPath, DB_FILES[count]))) {
+			if (File.Exists(DB_FILES[count])) {
 				populateTable(DB_FILES[count]);
 			} else {
-				Debug.LogError("Cannot find file: " + DB_FILES[count]);
+				UnityEngine.Debug.LogError("Cannot find file: " + DB_FILES[count]);
 			}	
 
 			count++;
 		}
 
-		processTime = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond - processTime;
-		if (Config.isDebug) Debug.Log("Database built:" + recordCount + " entries loaded in " + (processTime) + " miliseconds");
+		if (Config.isDebug) {
+			processTime = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond - processTime;
+			UnityEngine.Debug.Log("Database built:" + recordCount + " entries loaded in " + (processTime) + " miliseconds");
+		}
 	}
 
-	// Used to build arrays as they need to be built after the variable declearations
+	// Builds array of DB file names
 	private void buildDBFilesArray() {
-		DB_FILES  = new string[] {
-			MOBTABLE_FILENAME,
-			ITEMTABLE_FILENAME,
-			WEAPONTABLE_FILENAME
+		Debug.Log(Application.dataPath + @"/StreamingAssets/Data");
+		DB_FILES = Directory.GetFiles(Application.dataPath + @"/StreamingAssets/Data/", "*.json");
+		
+		foreach(string file in DB_FILES) {
+			Debug.Log(file);
 		};
 	}
 
-	// Populates a dictionary from a given filename
+	// Populates a dictionary from a given DB file
 	private void populateTable(string fileName) {
-		if (Config.isDebug) Debug.Log("Loading Data from " + fileName);
-		string tableAsJson = File.ReadAllText(Path.Combine(Application.streamingAssetsPath, fileName));
+		if (Config.isDebug) UnityEngine.Debug.Log("Loading Data from " + fileName);
+		string tableAsJson = File.ReadAllText(fileName);
 
-		switch (fileName) {
+		switch (Path.GetFileName(fileName)) {
 			case MOBTABLE_FILENAME:
 				MobTable mobTable = JsonUtility.FromJson<MobTable>(tableAsJson);
 				addDataToTable<MobData> (mobTable.dataItems, mobs);
@@ -89,13 +92,13 @@ public class DB {
 		}
 	}
 
-	private void addDataToTable<ObjectType> (ObjectType[] dataItems, Dictionary<string, ObjectType> db)
+	private void addDataToTable<ObjectType> (ObjectType[] dataItems, Dictionary<int, ObjectType> db)
 	{
 		foreach (ObjectType dataItem in dataItems) {
 			// cast the cureent dataItem to a DataItem object so we can get
 			// at the name value we will use as the key
 			DataItem dataItemAsDataItem = dataItem as DataItem;
-			db.Add(dataItemAsDataItem.name, dataItem);
+			db.Add(dataItemAsDataItem.ID, dataItem);
 			recordCount++;
 		}
 	}
@@ -106,16 +109,16 @@ public class DB {
 	*************************/
 
 	private void viewDBKeys () {
-		foreach (string key in mobs.Keys) {
-			Debug.Log(mobs[key].name);
+		foreach (int key in mobs.Keys) {
+			UnityEngine.Debug.Log(mobs[key].name);
 		}
 
-		foreach (string key in items.Keys) {
-			Debug.Log(items[key].name);
+		foreach (int key in items.Keys) {
+			UnityEngine.Debug.Log(items[key].name);
 		}
 
-		foreach (string key in weapons.Keys) {
-			Debug.Log(weapons[key].name);
+		foreach (int key in weapons.Keys) {
+			UnityEngine.Debug.Log(weapons[key].name);
 		}
 	}
 }

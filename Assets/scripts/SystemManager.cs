@@ -7,7 +7,7 @@ public class SystemManager : MonoBehaviour {
 	public DB db;
 	
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		db = new DB();
 	}
 }

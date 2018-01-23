@@ -12,8 +12,6 @@ public class BattleManager : MonoBehaviour {
 		PLAYERWIN
 	}
 
-	public  DB					   db;
-
 	private Dictionary<int, Enemy> enemies;
 	private EnemyGenerator         enemyGenerator;
 	private BattleStates		   battleState;
@@ -33,7 +31,6 @@ public class BattleManager : MonoBehaviour {
 
 	void Start () {
 		enemies = new Dictionary<int, Enemy>();
-		db = new DB();
 		enemyGenerator = gameObject.GetComponent<EnemyGenerator>();
 	}
 	

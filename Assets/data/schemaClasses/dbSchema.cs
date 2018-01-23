@@ -28,7 +28,7 @@ public class WeaponTable {
 
 [System.Serializable]
 public class DataItem {
-	public string objectType;
+	public int ID;
 	public string name;
 }
 

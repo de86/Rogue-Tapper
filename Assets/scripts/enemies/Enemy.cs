@@ -2,30 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public abstract class Enemy : MonoBehaviour {
 
 	public Sprite spr_attack, spr_hit, spr_idle;
 	
-	public enum state {
-		AGGRO,
-		ATTACKING,
-		CHARGING,
-		IDLE,
-		PAUSED
-	}
-	public state  		 currentState;
+	public EnemyStates    currentState;
 	public GameObject     obj_player;
 	public PlayerManager  player;
 	public SpriteRenderer sr;
 
-	public int    		 attack, defense, hp, xp;
+	public int    		 attack, defense, hp, xp, ID;
 	public float   	   	 attackTime;
 	public string 		 enemyName;
 
 
-	/*************************
-	** Public Methods
-	*************************/
 	public void SetStats (MobData mobData) {
 		attack 		= mobData.attack;
 		attackTime  = mobData.attackTime;
@@ -36,50 +26,12 @@ public class Enemy : MonoBehaviour {
 	}
 
 	/*************************
-	** Monobehaviours
-	*************************/
-
-	public void Awake () {
-		GameEventManager.playerDied += playerDied;
-		GameEventManager.gamePaused += paused;
-	}
-
-	public void Start () {
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-		sr 	   = gameObject.GetComponent<SpriteRenderer>();
-	}
-
-	public void Update () {
-		if (Input.GetMouseButtonDown(0)) {
-			receiveHit();
-		}
-
-		switch (currentState) {
-			case state.PAUSED:
-				break;
-
-			case state.AGGRO:
-				StartCoroutine(startAttack(attackTime));
-				break;
-
-			default:
-				break;
-		}
-	}
-
-
-
-	/*************************
 	** Event Handlers
 	*************************/
 
-	public void playerDied () {
-		Debug.Log("Slime says: OOOHHHH YEAHHH, I Killed you bitch!");
-	}
+	public abstract void PlayerDied ();
 
-	public  void paused () {
-		currentState = state.PAUSED;
-	}
+	public abstract void Paused ();
 
 
 
@@ -98,39 +50,29 @@ public class Enemy : MonoBehaviour {
 			"--------------------------";
 	}
 
-	public void receiveHit() {
-		StartCoroutine(setHitSprite());
-		hp -= 1;
+	public abstract void ReceiveHit();
 
-		Debug.Log("HP: " + hp);
+	public abstract void killEnemy ();
 
-		if (hp <= 0) killEnemy();
-	}
-
-	public void killEnemy () {
-		GameEventManager.EnemyKilled(GetInstanceID());
-		Destroy(gameObject);
-	}
-
-	IEnumerator startAttack (float countdownTime) {
-		currentState = state.CHARGING;
+	public virtual IEnumerator startAttack (float countdownTime) {
+		currentState = EnemyStates.CHARGING;
 
 		yield return new WaitForSeconds(countdownTime);
 
-		currentState = state.ATTACKING;
+		currentState = EnemyStates.ATTACKING;
 		sr.sprite    = spr_attack;
 
 		player.receiveHit(attack);
 
 		yield return new WaitForSeconds(0.2f);
 
-		if (currentState != state.PAUSED) {
-			currentState = state.AGGRO;
+		if (currentState != EnemyStates.PAUSED) {
+			currentState = EnemyStates.AGGRO;
 		}
 		sr.sprite = spr_idle;
 	}
 
-	IEnumerator setHitSprite () {
+	public virtual IEnumerator SetHitSprite () {
 		sr.sprite = spr_hit;
 
 		yield return new WaitForSeconds(0.2f);

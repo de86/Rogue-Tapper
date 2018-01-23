@@ -1,18 +1,21 @@
 {
     "dataItems": [
         {
-            "objectType": "item",
             "name": "Minor Health Potion",
+            "ID": 0,
+            "objectType": 0,
             "type": "heal"
         },
         {
-            "objectType": "item",
             "name": "Health Potion",
+            "ID": 1,
+            "objectType": 0,
             "type": "heal"
         },
         {
-            "objectType": "item",
             "name": "Great Health Potion",
+            "ID": 2,
+            "objectType": 0,
             "type": "heal"
         }
     ]

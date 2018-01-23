@@ -1,0 +1,5 @@
+public enum ItemTypesIds {
+	MIN_HEALTH_POTION = 0,
+	STD_HEALTH_POTION = 1,
+	GRT_HEALTH_POTION = 2
+}

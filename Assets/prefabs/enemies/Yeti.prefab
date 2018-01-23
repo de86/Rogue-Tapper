@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1413916077889234}
+  m_RootGameObject: {fileID: 1173184577878682}
   m_IsPrefabParent: 1
---- !u!1 &1413916077889234
+--- !u!1 &1173184577878682
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4796183971406224}
-  - component: {fileID: 212000453234129906}
-  - component: {fileID: 114347093560749432}
+  - component: {fileID: 4656396477888044}
+  - component: {fileID: 212288889768600778}
+  - component: {fileID: 114172665579227300}
   m_Layer: 0
-  m_Name: Imp
+  m_Name: Yeti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4796183971406224
+--- !u!4 &4656396477888044
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413916077889234}
+  m_GameObject: {fileID: 1173184577878682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,20 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114347093560749432
+--- !u!114 &114172665579227300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413916077889234}
+  m_GameObject: {fileID: 1173184577878682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e25a443bd52696c4e86511d4c32734e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4398f5c4d4a81794eb3d3e2471ac722d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spr_attack: {fileID: 21300000, guid: 568559b4490133f44be80d8d75b575c7, type: 3}
-  spr_hit: {fileID: 21300000, guid: d4528130b1ebf7e478fd180a7964f30c, type: 3}
-  spr_idle: {fileID: 21300000, guid: 5d3d17096ec48e44f862ee0285c22c22, type: 3}
+  spr_attack: {fileID: 21300000, guid: 9d9c93ed05dea1c468c2660b2d10382c, type: 3}
+  spr_hit: {fileID: 21300000, guid: ea3cedc4bf9517040bb378d494a771dc, type: 3}
+  spr_idle: {fileID: 21300000, guid: 7e266aaa8410d6241a1f6e6a12bbcb56, type: 3}
   currentState: 0
   obj_player: {fileID: 0}
   player: {fileID: 0}
@@ -66,12 +66,12 @@ MonoBehaviour:
   ID: 0
   attackTime: 0
   enemyName: 
---- !u!212 &212000453234129906
+--- !u!212 &212288889768600778
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1413916077889234}
+  m_GameObject: {fileID: 1173184577878682}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -100,12 +100,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d3d17096ec48e44f862ee0285c22c22, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e266aaa8410d6241a1f6e6a12bbcb56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.18, y: 6.23}
+  m_Size: {x: 5.69, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

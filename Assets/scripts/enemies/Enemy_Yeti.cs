@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Imp : Enemy {
+public class Enemy_Yeti : Enemy {
 
 	void Awake () {
 		GameEventManager.playerDied += PlayerDied;
@@ -42,7 +42,7 @@ public class Enemy_Imp : Enemy {
 	}
 
 	public override void PlayerDied () {
-		Debug.Log("Enemy Imp Killed You");
+		Debug.Log("Enemy Yeti Killed You");
 	}
 
 	public override void Paused () {
