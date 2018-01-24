@@ -35,7 +35,7 @@ public class DB {
 	
 	// Grabs all data from our json files and stores them in dictionaries
 	private void initDB() {
-		long processTime    = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
+		long processTime = System.DateTime.Now.Ticks / System.TimeSpan.TicksPerMillisecond;
 
 		buildDBFilesArray();
 
