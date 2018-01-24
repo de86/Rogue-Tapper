@@ -11,17 +11,17 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour {
 
 	public  GameObject slimePrefab,
-					   impPrefab,
-					   yetiPrefab;
+			   impPrefab,
+			   yetiPrefab;
 
 	private Dictionary<int, MobData>.KeyCollection availableEnemyTypes;
-	private SystemManager gameManager;
+	private SystemManager 			       gameManager;
 
 	void Awake () {
 	}
 
 	void Start () {
-		gameManager = GetComponent<SystemManager>();
+		gameManager         = GetComponent<SystemManager>();
 		availableEnemyTypes = gameManager.db.mobs.Keys;
 	}
 
@@ -30,8 +30,8 @@ public class EnemyGenerator : MonoBehaviour {
 
 		int		   enemyTypeId;		
 		GameObject enemyPrefab = ChooseEnemyType(out enemyTypeId);
-		GameObject enemyGO 	   = MonoBehaviour.Instantiate(enemyPrefab, new Vector3(0,0,0), Quaternion.identity);
-		Enemy      enemy   	   = enemyGO.GetComponent<Enemy>();
+		GameObject enemyGO     = MonoBehaviour.Instantiate(enemyPrefab, new Vector3(0,0,0), Quaternion.identity);
+		Enemy      enemy       = enemyGO.GetComponent<Enemy>();
 
 		MobData mobData;
 		gameManager.db.mobs.TryGetValue(enemyTypeId, out mobData);
