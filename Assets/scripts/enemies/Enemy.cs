@@ -11,18 +11,18 @@ public abstract class Enemy : MonoBehaviour {
 	public PlayerManager  player;
 	public SpriteRenderer sr;
 
-	public int    		 attack, defense, hp, xp, ID;
-	public float   	   	 attackTime;
-	public string 		 enemyName;
+	public int    attack, defense, hp, xp, ID;
+	public float  attackTime;
+	public string enemyName;
 
 
 	public void SetStats (MobData mobData) {
-		attack 		= mobData.attack;
-		attackTime  = mobData.attackTime;
-		defense 	= mobData.defense;
-		enemyName   = mobData.name;
-		hp 			= mobData.hp;
-		xp 			= mobData.maxXP;
+		attack 	   = mobData.attack;
+		attackTime = mobData.attackTime;
+		defense	   = mobData.defense;
+		enemyName  = mobData.name;
+		hp 	   = mobData.hp;
+		xp 	   = mobData.maxXP;
 	}
 
 	/*************************
