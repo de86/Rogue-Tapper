@@ -11,7 +11,7 @@ public class Enemy_Slime : Enemy {
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-		sr 	   = gameObject.GetComponent<SpriteRenderer>();
+		sr     = gameObject.GetComponent<SpriteRenderer>();
 	}
 
 	void Update () {
