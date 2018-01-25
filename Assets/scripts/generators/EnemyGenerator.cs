@@ -11,11 +11,11 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour {
 
 	public  GameObject slimePrefab,
-			   impPrefab,
-			   yetiPrefab;
+			   		   impPrefab,
+			   		   yetiPrefab;
 
 	private Dictionary<int, MobData>.KeyCollection availableEnemyTypes;
-	private SystemManager 			       gameManager;
+	private SystemManager                          gameManager;
 
 	void Awake () {
 	}

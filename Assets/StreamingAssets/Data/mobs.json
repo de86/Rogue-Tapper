@@ -3,7 +3,7 @@
         {
             "name": "slime",
             "objectType": 1,
-            "typeID": 0,
+            "ID": 0,
             "areas" : [
                 0
             ],
@@ -16,7 +16,7 @@
         {
             "name": "imp",
             "objectType": 1,
-            "typeID": 1,
+            "ID": 1,
             "areas" : [
                 0,
                 1
@@ -30,7 +30,7 @@
         {
             "name": "yeti",
             "objectType": 1,
-            "typeID": 2,
+            "ID": 2,
             "areas" : [
                 2
             ],
