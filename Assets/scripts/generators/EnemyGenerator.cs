@@ -10,53 +10,53 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
 
-	public  GameObject slimePrefab,
-			   		   impPrefab,
-			   		   yetiPrefab;
+	public GameObject slimePrefab,
+			              impPrefab,
+			              yetiPrefab;
 
-	private Dictionary<int, MobData>.KeyCollection availableEnemyTypes;
-	private SystemManager                          gameManager;
-
-	void Awake () {
-	}
+	private Dictionary<int, SimpleMob>.KeyCollection availableEnemyTypes;
+	private SystemManager                            gameManager;
 
 	void Start () {
 		gameManager         = GetComponent<SystemManager>();
-		availableEnemyTypes = gameManager.db.mobs.Keys;
+		availableEnemyTypes = gameManager.DB.mobs.Keys;
 	}
 
 	public Transform generateEnemy () {
 		if (Config.isDebug) Debug.Log("Generating Enemy...");
 
-		int		   enemyTypeId;		
-		GameObject enemyPrefab = ChooseEnemyType(out enemyTypeId);
-		GameObject enemyGO     = MonoBehaviour.Instantiate(enemyPrefab, new Vector3(0,0,0), Quaternion.identity);
-		Enemy      enemy       = enemyGO.GetComponent<Enemy>();
+		int	enemyTypeId;		
 
-		MobData mobData;
-		gameManager.db.mobs.TryGetValue(enemyTypeId, out mobData);
+		GameObject enemyPrefab     = ChooseEnemyType(out enemyTypeId);
+		GameObject enemyGameObject = MonoBehaviour.Instantiate(enemyPrefab, new Vector3(0,0,0), Quaternion.identity);
+		Enemy      enemy           = enemyGameObject.GetComponent<Enemy>();
+
+		SimpleMob mobData;
+		gameManager.DB.mobs.TryGetValue(enemyTypeId, out mobData);
 
 		enemy.SetStats(mobData);
 
 		if (Config.isDebug) {
 			Debug.Log("Generating Enemy...");
 			Debug.Log(enemy.toString());
-		}
+		};
 
-		return enemyGO.GetComponent<Transform>();
+		return enemyGameObject.GetComponent<Transform>();
 	}
 
 	public GameObject ChooseEnemyType (out int enemyTypeId) {
 		enemyTypeId = (int)System.Math.Floor(Random.Range(0f, 3f));
 
+    GameObject enemyPrefab;
+
 		switch (enemyTypeId) {
-			case (int)EnemyTypeIds.SLIME:
+			case (int)EnemyTypes.SLIME:
 				return slimePrefab;
 
-			case (int)EnemyTypeIds.IMP:
+			case (int)EnemyTypes.IMP:
 				return impPrefab;
 
-			case (int)EnemyTypeIds.YETI:
+			case (int)EnemyTypes.YETI:
 				return yetiPrefab;
 
 			default:

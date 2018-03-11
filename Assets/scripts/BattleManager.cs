@@ -14,8 +14,8 @@ public class BattleManager : MonoBehaviour {
 
 	private Dictionary<int, Enemy> enemies;
 	private EnemyGenerator         enemyGenerator;
-	private BattleStates	       battleState;
-	private int		       enemyCount;
+	private BattleStates	         battleState;
+	private int		                 enemyCount;
 
 
 	/*************************

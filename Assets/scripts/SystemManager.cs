@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SystemManager : MonoBehaviour {
 
-	public DB db;
+	public DB DB;
 	
 	// Use this for initialization
 	void Awake () {
-		db = new DB();
+	  DB = new DB();
 	}
 }

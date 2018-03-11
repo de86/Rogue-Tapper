@@ -32,13 +32,13 @@ public class Enemy_Imp : Enemy {
 		}
 	}
 
-	public void setBase (string name, int hp, int attack, int defense) {
-		this.attack  = attack;
-		this.defense = defense;
-		this.hp      = hp;
-		attackTime   = 3f;
-		currentState = EnemyStates.AGGRO;
-		enemyName    = name;
+	public void setBase (string name, int hp, int attack, int defense, float attackTime) {
+		this.attack      = attack;
+		this.defense     = defense;
+		this.hp          = hp;
+		this.attackTime  = attackTime;
+		currentState     = EnemyStates.AGGRO;
+		this.name        = name;
 	}
 
 	public override void PlayerDied () {

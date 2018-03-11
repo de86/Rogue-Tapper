@@ -13,16 +13,16 @@ public abstract class Enemy : MonoBehaviour {
 
 	public int    attack, defense, hp, xp, ID;
 	public float  attackTime;
-	public string enemyName;
+	public string name;
 
 
-	public void SetStats (MobData mobData) {
+	public void SetStats (SimpleMob mobData) {
 		attack 	   = mobData.attack;
 		attackTime = mobData.attackTime;
 		defense	   = mobData.defense;
-		enemyName  = mobData.name;
-		hp 	   = mobData.hp;
-		xp 	   = mobData.maxXP;
+	  name       = mobData.name;
+		hp 	       = mobData.hp;
+		xp 	       = mobData.maxXP;
 	}
 
 	/*************************
@@ -36,14 +36,14 @@ public abstract class Enemy : MonoBehaviour {
 
 
 	/*************************
-	** Inernals
+	** Internals
 	*************************/
 
 	public string toString () {
 		// TODO: Convert to string builder...
 		return
 			"--------------------------\n" +
-			"Name: "    + enemyName + "\n" +
+			"Name: "    + name      + "\n" +
 			"Attack: "  + attack    + "\n" +
 			"Defense: " + defense   + "\n" +
 			"HP: "      + hp        + "\n" +
